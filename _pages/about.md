@@ -19,12 +19,3 @@ social: true # includes social icons at the bottom of the page
 ---
 
 Hey there 👋, my name is Omkar Garad (pronounced "Ohm-kar Guh-ruhd"). I'm a 2nd year Masters student at Cornell University, interested in developing AI products that have a positive and tangible impact on the world! I also enjoy playing football ⚽, hitting the gym 🏋️, digital art 🎨, playing the guitar 🎸 and photography 📸!
-
-<h3 align="left"> Technical Skills </h3>
-
-Languages: 
-Python, C++, C, SQL, Java
-
-
-Technologies and Frameworks:
-PyTorch, TensorFlow, Pandas, NumPy, Scikit-Learn, Azure Databricks, Google Cloud Platform, Spark, MLflow, Tableau, Agile Development Methodologies
