@@ -12,9 +12,10 @@ async function fetchJoke() {
         jokeContainer.innerHTML = `<p>${data.value}</p>`;
         refreshButton.style.display = 'inline-block';
     } catch (error) {
+
         console.error('Error fetching joke:', error);
         jokeContainer.innerHTML = `<p>Failed to load joke. Please try again later.</p>`;
-        refreshButton.style.display = 'inline-block';
+        refreshButton.style.display = 'inline-block'; // Show the button even if there's an error
     }
 }
 
