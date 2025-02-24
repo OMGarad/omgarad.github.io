@@ -19,6 +19,14 @@ async function fetchJoke() {
     }
 }
 
+document.addEventListener('mousemove', (event) => {
+    const x = event.clientX / window.innerWidth;
+    const y = event.clientY / window.innerHeight;
+    const hue = Math.round(x * 360);
+    const saturation = Math.round(y * 100);
+    document.body.style.backgroundColor = `hsl(${hue}, ${saturation}%, 80%)`;
+});
+
 window.addEventListener('load', fetchJoke);
 
 const refreshButton = document.getElementById('refresh-button');
