@@ -72,3 +72,23 @@ details {
       width: 100%;
     }
   }
+
+  .joke-container {
+    margin: 20px 0;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+#refresh-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#refresh-button:hover {
+    background-color: #0056b3;
+}
