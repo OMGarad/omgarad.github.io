@@ -105,12 +105,7 @@ details {
     width: 300px;
     height: 300px;
     margin: 20px auto;
-    clip-path: polygon(50% 0,
-    calc(50%*(1 + sin(.4turn))) calc(50%*(1 - cos(.4turn))),
-    calc(50%*(1 - sin(.2turn))) calc(50%*(1 - cos(.2turn))),
-    calc(50%*(1 + sin(.2turn))) calc(50%*(1 - cos(.2turn))),
-    calc(50%*(1 - sin(.4turn))) calc(50%*(1 - cos(.4turn))) 
-   ); 
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 85% 100%, 50% 70%, 15% 100%, 32% 57%, 2% 35%, 39% 35%);
     overflow: hidden;
 }
 
