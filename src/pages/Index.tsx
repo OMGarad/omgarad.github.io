@@ -1,13 +1,29 @@
-// Update this page (the content is just a fallback if you fail to update the page)
 
-const Index = () => {
+import React from "react";
+import Layout from "../components/Layout";
+import AboutSection from "../components/AboutSection";
+import EducationSection from "../components/EducationSection";
+import ExperienceSection from "../components/ExperienceSection";
+import ProjectsSection from "../components/ProjectsSection";
+import HobbiesSection from "../components/HobbiesSection";
+import ContactSection from "../components/ContactSection";
+import Footer from "../components/Footer";
+import TechnicalSkills from "../components/TechnicalSkills";
+
+const Index: React.FC = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <Layout>
+      <div className="pt-20">
+        <AboutSection />
+        <TechnicalSkills />
+        <EducationSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <HobbiesSection />
+        <ContactSection />
+        <Footer />
       </div>
-    </div>
+    </Layout>
   );
 };
 
