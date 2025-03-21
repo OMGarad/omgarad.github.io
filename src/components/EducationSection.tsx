@@ -1,9 +1,10 @@
 
 import React from "react";
-import { GraduationCap, Award, BookOpen } from "lucide-react";
+import { GraduationCap, Award } from "lucide-react";
 
 interface EducationItem {
   institution: string;
+  logo: string;
   degree: string;
   location: string;
   period: string;
@@ -14,6 +15,7 @@ interface EducationItem {
 const educationData: EducationItem[] = [
   {
     institution: "Cornell University (Cornell Tech)",
+    logo: "/lovable-uploads/8da41661-ee31-4013-8b5b-6a7d63b92fac.png",
     degree: "MS in Information Systems",
     location: "New York, NY",
     period: "August 2023 - May 2025",
@@ -25,6 +27,7 @@ const educationData: EducationItem[] = [
   },
   {
     institution: "BITS Pilani",
+    logo: "/lovable-uploads/c2c4b292-8684-448a-8822-cee12dcb44f6.png",
     degree: "Bachelor of Engineering in Computer Science",
     location: "Goa, India",
     period: "August 2019 - May 2023",
@@ -34,12 +37,6 @@ const educationData: EducationItem[] = [
     ],
     award: "Merit Scholar"
   }
-];
-
-const relevantCourses = [
-  "Deep Learning", "Computer Vision", "Machine Learning", "Artificial Intelligence", 
-  "Foundations of Data Science", "Natural Language Processing", "Applied Statistical Methods", 
-  "Data Structures & Algorithms", "Database Systems"
 ];
 
 const EducationSection: React.FC = () => {
@@ -53,9 +50,12 @@ const EducationSection: React.FC = () => {
             <div className={index === 0 ? "timeline-dot-active" : "timeline-dot"}></div>
             <div className="card mb-4">
               <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-3">
-                <div>
-                  <h3 className="text-xl font-semibold">{edu.institution}</h3>
-                  <p className="text-primary/80 dark:text-white/80">{edu.degree}</p>
+                <div className="flex items-center gap-4">
+                  <div>
+                    <h3 className="text-xl font-semibold">{edu.institution}</h3>
+                    <p className="text-primary/80 dark:text-white/80">{edu.degree}</p>
+                  </div>
+                  <img src={edu.logo} alt={edu.institution} className="h-16 w-16 object-contain" />
                 </div>
                 <div className="text-sm text-muted-foreground">
                   <div className="flex items-center gap-1 mb-1">
@@ -78,26 +78,6 @@ const EducationSection: React.FC = () => {
             </div>
           </div>
         ))}
-
-        <div className="relative animate-fade-in-right">
-          <div className="timeline-dot"></div>
-          <div className="card">
-            <div className="flex items-center gap-3 mb-3">
-              <BookOpen size={20} className="text-primary/70 dark:text-white/70" />
-              <h3 className="text-lg font-semibold">Relevant Coursework</h3>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {relevantCourses.map((course, index) => (
-                <span 
-                  key={index}
-                  className="px-3 py-1 bg-secondary dark:bg-secondary/20 text-sm rounded-full"
-                >
-                  {course}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );

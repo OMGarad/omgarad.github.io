@@ -1,6 +1,5 @@
 
 import React, { useEffect, useState } from "react";
-import { Sun, Moon } from "lucide-react";
 import NavBar from "./NavBar";
 
 interface LayoutProps {
@@ -32,18 +31,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <NavBar />
-      <button
-        onClick={toggleTheme}
-        className="fixed right-6 top-6 z-50 p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors dark:bg-white/5 dark:hover:bg-white/10"
-        aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-      >
-        {theme === "light" ? (
-          <Moon size={20} className="text-primary" />
-        ) : (
-          <Sun size={20} className="text-white" />
-        )}
-      </button>
+      <NavBar toggleTheme={toggleTheme} theme={theme} />
       <main className="flex-1">{children}</main>
     </div>
   );

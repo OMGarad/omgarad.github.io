@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
 
 const AboutSection: React.FC = () => {
@@ -8,8 +8,8 @@ const AboutSection: React.FC = () => {
   return (
     <section id="about" className="section">
       <div className="flex flex-col md:flex-row md:items-center gap-12">
-        <div className="md:w-1/3 flex justify-center">
-          <div className="relative">
+        <div className="md:w-1/3 flex flex-col items-center">
+          <div className="relative mb-6">
             <div className="w-60 h-60 overflow-hidden rounded-full border-2 border-primary/10 dark:border-white/10 shadow-xl glowing">
               <img
                 src={profileImageUrl}
@@ -18,6 +18,33 @@ const AboutSection: React.FC = () => {
                 loading="lazy"
               />
             </div>
+          </div>
+          <div className="flex justify-center gap-4 mt-2">
+            <a 
+              href="https://github.com/OMGarad" 
+              target="_blank" 
+              rel="noreferrer"
+              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-colors"
+              aria-label="GitHub"
+            >
+              <Github size={24} className="text-primary dark:text-white" />
+            </a>
+            <a 
+              href="https://www.linkedin.com/in/omkargarad/" 
+              target="_blank" 
+              rel="noreferrer"
+              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={24} className="text-primary dark:text-white" />
+            </a>
+            <a 
+              href="mailto:omgarad@gmail.com" 
+              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-colors"
+              aria-label="Email"
+            >
+              <Mail size={24} className="text-primary dark:text-white" />
+            </a>
           </div>
         </div>
 
@@ -47,31 +74,7 @@ const AboutSection: React.FC = () => {
             </div>
             <div className="flex items-center gap-2">
               <Mail size={16} className="text-primary/70 dark:text-white/70" />
-              <a href="mailto:omg22@cornell.edu" className="hover:text-primary dark:hover:text-white">
-                omg22@cornell.edu
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <Github size={16} className="text-primary/70 dark:text-white/70" />
-              <a 
-                href="https://github.com/OMGarad" 
-                target="_blank" 
-                rel="noreferrer" 
-                className="hover:text-primary dark:hover:text-white"
-              >
-                github.com/OMGarad
-              </a>
-            </div>
-            <div className="flex items-center gap-2 col-span-1 md:col-span-2">
-              <Linkedin size={16} className="text-primary/70 dark:text-white/70" />
-              <a 
-                href="https://www.linkedin.com/in/omkargarad/" 
-                target="_blank" 
-                rel="noreferrer"
-                className="hover:text-primary dark:hover:text-white"
-              >
-                linkedin.com/in/omkargarad
-              </a>
+              <span>omgarad [at] gmail [dot] com</span>
             </div>
           </div>
         </div>

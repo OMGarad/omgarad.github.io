@@ -54,12 +54,6 @@ const HobbiesSection: React.FC = () => {
           </div>
         ))}
       </div>
-      
-      <div className="mt-10">
-        <p className="text-center text-muted-foreground">
-          These hobbies help me maintain a balanced life and often inspire my creative thinking in professional work.
-        </p>
-      </div>
     </section>
   );
 };

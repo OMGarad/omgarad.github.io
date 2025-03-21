@@ -1,11 +1,11 @@
 
 import React from "react";
-import { Mail, Linkedin, Github, FileText, MapPin, Phone } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, Phone } from "lucide-react";
 
 const ContactSection: React.FC = () => {
   return (
     <section id="contact" className="section">
-      <h2 className="section-title">Get In Touch</h2>
+      <h2 className="section-title">Contact Me</h2>
       
       <div className="max-w-2xl mx-auto">
         <div className="card glowing p-8">
@@ -17,12 +17,7 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
-                  <a 
-                    href="mailto:omg22@cornell.edu" 
-                    className="hover:text-primary dark:hover:text-white transition-colors"
-                  >
-                    omg22@cornell.edu
-                  </a>
+                  <p>omgarad [at] gmail [dot] com</p>
                 </div>
               </div>
               
@@ -65,7 +60,7 @@ const ContactSection: React.FC = () => {
                     rel="noreferrer"
                     className="hover:text-primary dark:hover:text-white transition-colors"
                   >
-                    linkedin.com/in/omkargarad
+                    Connect with me
                   </a>
                 </div>
               </div>
@@ -82,24 +77,7 @@ const ContactSection: React.FC = () => {
                     rel="noreferrer"
                     className="hover:text-primary dark:hover:text-white transition-colors"
                   >
-                    github.com/OMGarad
-                  </a>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3 group">
-                <div className="p-2 bg-secondary dark:bg-secondary/20 rounded-full group-hover:bg-primary/10 dark:group-hover:bg-white/10 transition-colors">
-                  <FileText size={20} className="text-primary dark:text-white" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Portfolio</p>
-                  <a 
-                    href="https://sites.google.com/view/omkargarad" 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="hover:text-primary dark:hover:text-white transition-colors"
-                  >
-                    sites.google.com/view/omkargarad
+                    View my repositories
                   </a>
                 </div>
               </div>
@@ -107,11 +85,8 @@ const ContactSection: React.FC = () => {
           </div>
           
           <div className="mt-8 text-center">
-            <p className="text-muted-foreground mb-4">
-              I'm always open to new opportunities and collaborations. Feel free to reach out!
-            </p>
             <a
-              href="mailto:omg22@cornell.edu"
+              href="mailto:omgarad@gmail.com"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-white dark:text-primary dark:hover:bg-white/90 transition-colors"
             >
               <Mail size={18} />
