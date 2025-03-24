@@ -64,7 +64,7 @@ const EducationSection: React.FC = () => {
                     <MapPin size={14} />
                     <span>{edu.location}</span>
                   </div>
-                  <div>{edu.period}</div>
+                  <div className="text-muted-foreground">{edu.period}</div>
                 </div>
               </div>
               <ul className="list-disc list-inside text-sm space-y-1 text-muted-foreground">

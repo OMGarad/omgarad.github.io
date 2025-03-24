@@ -18,7 +18,7 @@ interface ExperienceItem {
 const experienceData: ExperienceItem[] = [
   {
     company: "Honeywell",
-    companyLogo: "/lovable-uploads/cb964b1f-6b1c-47d0-89ac-af891a0a3be9.png", // Swapped with IBM logo
+    companyLogo: "/lovable-uploads/dc30d013-8bf1-48fb-bc9d-960e56c76dff.png",
     position: "AI/ML Intern",
     location: "Atlanta, GA",
     period: "May 2024 - Aug 2024",
@@ -38,7 +38,7 @@ const experienceData: ExperienceItem[] = [
   },
   {
     company: "IBM",
-    companyLogo: "/lovable-uploads/dc30d013-8bf1-48fb-bc9d-960e56c76dff.png", // Swapped with Honeywell logo
+    companyLogo: "/lovable-uploads/cb964b1f-6b1c-47d0-89ac-af891a0a3be9.png",
     position: "Machine Learning Intern",
     location: "Bangalore, India",
     period: "May 2022 - Aug 2022",
@@ -59,9 +59,9 @@ const ExperienceSection: React.FC = () => {
               <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
                 <div className="flex items-center gap-4">
                   <div>
-                    <h3 className="text-xl font-semibold">{exp.company}</h3>
+                    <h3 className="text-xl font-semibold">{exp.position}</h3>
                     <div className="flex items-center gap-2 text-primary/80 dark:text-white/80">
-                      <span>{exp.position}</span>
+                      <span>{exp.company}</span>
                     </div>
                   </div>
                   <img src={exp.companyLogo} alt={exp.company} className="h-16 w-auto object-contain" />
@@ -71,7 +71,7 @@ const ExperienceSection: React.FC = () => {
                     <MapPin size={14} />
                     <span>{exp.location}</span>
                   </div>
-                  <div className="text-white">{exp.period}</div>
+                  <div className="text-muted-foreground">{exp.period}</div>
                 </div>
               </div>
               <p className="text-sm mb-4">{exp.description}</p>
