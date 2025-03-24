@@ -1,9 +1,18 @@
 
 import React from "react";
-import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+import { Github, Linkedin, Mail, FileText } from "lucide-react";
 
 const AboutSection: React.FC = () => {
   const profileImageUrl = "/lovable-uploads/53008bc9-6171-403b-977e-1822e27342b8.png";
+
+  const handleDownloadCV = () => {
+    const link = document.createElement("a");
+    link.href = "/resume-omkar-garad.pdf";
+    link.download = "Omkar-Garad-Resume.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
   return (
     <section id="about" className="section">
@@ -45,6 +54,13 @@ const AboutSection: React.FC = () => {
             >
               <Mail size={24} className="text-primary dark:text-white" />
             </a>
+            <button
+              onClick={handleDownloadCV}
+              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-colors"
+              aria-label="Download CV"
+            >
+              <FileText size={24} className="text-primary dark:text-white" />
+            </button>
           </div>
         </div>
 
@@ -62,21 +78,6 @@ const AboutSection: React.FC = () => {
             With a background in Computer Science, I'm passionate about applying machine learning techniques to 
             solve complex problems in health tech and other domains.
           </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-            <div className="flex items-center gap-2">
-              <MapPin size={16} className="text-primary/70 dark:text-white/70" />
-              <span>New York, NY | US Citizen</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Phone size={16} className="text-primary/70 dark:text-white/70" />
-              <span>332-273-8613</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail size={16} className="text-primary/70 dark:text-white/70" />
-              <span>omgarad [at] gmail [dot] com</span>
-            </div>
-          </div>
         </div>
       </div>
     </section>

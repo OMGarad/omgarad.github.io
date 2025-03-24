@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon, FileText } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 
 interface NavBarProps {
   toggleTheme: () => void;
@@ -82,10 +82,9 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
           ))}
           <button 
             onClick={handleDownloadCV} 
-            className="nav-item flex items-center gap-1"
+            className="nav-item"
           >
-            <FileText size={16} />
-            <span>CV</span>
+            CV
           </button>
           <button
             onClick={toggleTheme}
@@ -145,10 +144,9 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
               handleDownloadCV();
               closeMenu();
             }} 
-            className="text-lg font-medium text-primary dark:text-white hover:text-primary/80 dark:hover:text-white/80 flex items-center gap-2"
+            className="text-lg font-medium text-primary dark:text-white hover:text-primary/80 dark:hover:text-white/80"
           >
-            <FileText size={18} />
-            <span>CV</span>
+            CV
           </button>
         </div>
       </div>

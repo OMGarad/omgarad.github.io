@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Mail, Linkedin, Github, MapPin, Phone } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin } from "lucide-react";
 
 const ContactSection: React.FC = () => {
   return (
@@ -18,21 +18,6 @@ const ContactSection: React.FC = () => {
                 <div>
                   <p className="text-sm text-muted-foreground">Email</p>
                   <p>omgarad [at] gmail [dot] com</p>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-3 group">
-                <div className="p-2 bg-secondary dark:bg-secondary/20 rounded-full group-hover:bg-primary/10 dark:group-hover:bg-white/10 transition-colors">
-                  <Phone size={20} className="text-primary dark:text-white" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">Phone</p>
-                  <a 
-                    href="tel:+13322738613" 
-                    className="hover:text-primary dark:hover:text-white transition-colors"
-                  >
-                    (332) 273-8613
-                  </a>
                 </div>
               </div>
               
@@ -87,7 +72,7 @@ const ContactSection: React.FC = () => {
           <div className="mt-8 text-center">
             <a
               href="mailto:omgarad@gmail.com"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 dark:bg-white dark:text-primary dark:hover:bg-white/90 transition-colors"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-background text-foreground hover:bg-background/80 dark:bg-background dark:text-foreground dark:hover:bg-background/90 transition-colors border border-primary/20 dark:border-white/10"
             >
               <Mail size={18} />
               <span>Send me a message</span>

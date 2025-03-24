@@ -1,6 +1,6 @@
 
 import React from "react";
-import { GraduationCap, Award } from "lucide-react";
+import { Award, MapPin } from "lucide-react";
 
 interface EducationItem {
   institution: string;
@@ -55,10 +55,13 @@ const EducationSection: React.FC = () => {
                     <h3 className="text-xl font-semibold">{edu.institution}</h3>
                     <p className="text-primary/80 dark:text-white/80">{edu.degree}</p>
                   </div>
-                  <img src={edu.logo} alt={edu.institution} className="h-16 w-16 object-contain" />
+                  <div className="p-2 bg-white dark:bg-white/90 rounded-full">
+                    <img src={edu.logo} alt={edu.institution} className="h-12 w-12 object-contain" />
+                  </div>
                 </div>
                 <div className="text-sm text-muted-foreground">
                   <div className="flex items-center gap-1 mb-1">
+                    <MapPin size={14} />
                     <span>{edu.location}</span>
                   </div>
                   <div>{edu.period}</div>
