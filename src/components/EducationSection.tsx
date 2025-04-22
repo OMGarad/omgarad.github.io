@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { Award, MapPin } from "lucide-react";
 
 interface EducationItem {
@@ -40,68 +40,44 @@ const educationData: EducationItem[] = [
 ];
 
 const EducationSection: React.FC = () => {
-  const [activeCard, setActiveCard] = useState<number | null>(null);
-
-  const handleCardHover = (index: number | null) => {
-    setActiveCard(index);
-  };
-
   return (
     <section id="education" className="section">
       <h2 className="section-title">Education</h2>
 
       <div className="timeline-container pb-8">
         {educationData.map((edu, index) => (
-          <div 
-            key={index} 
-            className="mb-10 relative animate-fade-in-right"
-            onMouseEnter={() => handleCardHover(index)}
-            onMouseLeave={() => handleCardHover(null)}
-          >
-            <div 
-              className={`absolute -left-[9px] h-4 w-4 rounded-full bg-background border-2 border-primary shadow-sm transition-colors duration-300 ${
-                activeCard === index ? "bg-accent-foreground" : ""
-              }`}
-            ></div>
-            
-            <div className="card">
-              <div className="flex items-center">
-                <div className="w-1/5 flex-shrink-0 flex justify-center">
-                  <div className="p-2 bg-white dark:bg-white/10 rounded-full">
-                    <img 
-                      src={edu.logo} 
-                      alt={edu.institution} 
-                      className="h-16 w-16 object-contain" 
-                    />
+          <div key={index} className="mb-10 relative animate-fade-in-right">
+            <div className={index === 0 ? "timeline-dot-active" : "timeline-dot"}></div>
+            <div className="card mb-4">
+              <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-2 mb-3">
+                <div className="flex items-center gap-4">
+                  <div>
+                    <h3 className="text-xl font-semibold">{edu.institution}</h3>
+                    <p className="text-primary/80 dark:text-white/80">{edu.degree}</p>
+                  </div>
+                  <div className="p-2 bg-white dark:bg-white/90 rounded-full">
+                    <img src={edu.logo} alt={edu.institution} className="h-12 w-12 object-contain" />
                   </div>
                 </div>
-                
-                <div className="w-3/5 px-4">
-                  <h3 className="text-xl font-semibold">{edu.institution}</h3>
-                  <p className="text-primary/80 dark:text-white/80">{edu.degree}</p>
-                  
-                  <ul className="list-disc list-inside text-sm space-y-1 text-muted-foreground mt-2">
-                    {edu.highlights.map((highlight, i) => (
-                      <li key={i}>{highlight}</li>
-                    ))}
-                  </ul>
-                  
-                  {edu.award && (
-                    <div className="mt-3 flex items-center gap-2 text-sm">
-                      <Award size={16} className="text-primary/70 dark:text-white/70" />
-                      <span className="font-medium">{edu.award}</span>
-                    </div>
-                  )}
-                </div>
-                
-                <div className="w-1/5 text-sm text-muted-foreground text-right">
-                  <div className="flex items-center gap-1 mb-1 justify-end">
+                <div className="text-sm text-muted-foreground">
+                  <div className="flex items-center gap-1 mb-1">
                     <MapPin size={14} />
                     <span>{edu.location}</span>
                   </div>
-                  <div>{edu.period}</div>
+                  <div className="text-muted-foreground">{edu.period}</div>
                 </div>
               </div>
+              <ul className="list-disc list-inside text-sm space-y-1 text-muted-foreground">
+                {edu.highlights.map((highlight, i) => (
+                  <li key={i}>{highlight}</li>
+                ))}
+              </ul>
+              {edu.award && (
+                <div className="mt-3 flex items-center gap-2 text-sm">
+                  <Award size={16} className="text-primary/70 dark:text-white/70" />
+                  <span className="font-medium">{edu.award}</span>
+                </div>
+              )}
             </div>
           </div>
         ))}

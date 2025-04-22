@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React from "react";
 import { MapPin } from "lucide-react";
 
 interface ExperienceItem {
@@ -47,97 +47,44 @@ const experienceData: ExperienceItem[] = [
 ];
 
 const ExperienceSection: React.FC = () => {
-  const [flippedCards, setFlippedCards] = useState<Record<number, boolean>>({});
-
-  const handleCardFlip = (index: number) => {
-    setFlippedCards(prev => ({
-      ...prev,
-      [index]: !prev[index]
-    }));
-  };
-
-  const handleCardHover = (index: number, isHovering: boolean) => {
-    // Only apply hover effect if the card isn't already flipped from clicking
-    if (!flippedCards[index]) {
-      const card = document.getElementById(`exp-card-${index}`);
-      if (card) {
-        if (isHovering) {
-          card.classList.add('is-flipped');
-        } else {
-          card.classList.remove('is-flipped');
-        }
-      }
-    }
-  };
-
   return (
     <section id="experience" className="section">
       <h2 className="section-title">Experience</h2>
 
       <div className="timeline-container">
         {experienceData.map((exp, index) => (
-          <div 
-            key={index} 
-            className={`mb-10 relative animate-fade-in-right`}
-            onMouseEnter={() => handleCardHover(index, true)}
-            onMouseLeave={() => handleCardHover(index, false)}
-          >
-            <div 
-              className={`absolute -left-[9px] h-4 w-4 rounded-full bg-background border-2 border-primary shadow-sm transition-colors duration-300 ${
-                flippedCards[index] ? "bg-accent-foreground" : "hover:bg-accent-foreground"
-              }`}
-            ></div>
-            
-            <div 
-              id={`exp-card-${index}`}
-              className={`card-container ${flippedCards[index] ? 'is-flipped' : ''}`}
-              onClick={() => handleCardFlip(index)}
-            >
-              {/* Front of card */}
-              <div className="card-face card-front">
-                <div className="flex h-full">
-                  <div className="w-1/3 flex items-center justify-center p-2 bg-white dark:bg-white/10 rounded-l-xl">
-                    <img 
-                      src={exp.companyLogo} 
-                      alt={exp.company} 
-                      className="w-full h-auto max-h-32 object-contain" 
-                    />
-                  </div>
-                  
-                  <div className="w-2/3 flex flex-col justify-center p-4">
-                    <div className="mb-1">
-                      <h3 className="text-xl font-bold">{exp.position}</h3>
-                      <p className="font-semibold text-primary/80 dark:text-white/80">{exp.company}</p>
-                    </div>
-                    
-                    <div className="text-sm text-muted-foreground mt-2">
-                      <div className="flex items-center gap-1 mb-1">
-                        <MapPin size={14} />
-                        <span>{exp.location}</span>
-                      </div>
-                      <div>{exp.period}</div>
+          <div key={index} className="mb-10 relative animate-fade-in-right">
+            <div className={index === 0 ? "timeline-dot-active" : "timeline-dot"}></div>
+            <div className="card">
+              <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-4 mb-4">
+                <div className="flex items-center gap-4">
+                  <div>
+                    <h3 className="text-xl font-semibold">{exp.position}</h3>
+                    <div className="flex items-center gap-2 text-primary/80 dark:text-white/80">
+                      <span>{exp.company}</span>
                     </div>
                   </div>
+                  <img src={exp.companyLogo} alt={exp.company} className="h-16 w-auto object-contain" />
+                </div>
+                <div className="text-sm">
+                  <div className="flex items-center gap-2 text-muted-foreground mb-1">
+                    <MapPin size={14} />
+                    <span>{exp.location}</span>
+                  </div>
+                  <div className="text-muted-foreground">{exp.period}</div>
                 </div>
               </div>
-              
-              {/* Back of card */}
-              <div className="card-face card-back">
-                <div className="p-6 h-full flex flex-col justify-center">
-                  <p className="text-sm">{exp.description}</p>
-                  {exp.link && (
-                    <a 
-                      href={exp.link.url} 
-                      target="_blank" 
-                      rel="noreferrer" 
-                      className="text-sm text-primary dark:text-blue-400 hover:underline mt-2"
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      {exp.link.text}
-                    </a>
-                  )}
-                </div>
-              </div>
+              <p className="text-sm mb-4">{exp.description}</p>
+              {exp.link && (
+                <a 
+                  href={exp.link.url} 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="text-sm text-primary dark:text-blue-400 hover:underline"
+                >
+                  {exp.link.text}
+                </a>
+              )}
             </div>
           </div>
         ))}
