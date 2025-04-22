@@ -7,8 +7,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
+import { AspectRatio } from "./ui/aspect-ratio";
 
-// IMAGE CAROUSELS — Update these arrays if you upload new images
+// IMAGE CAROUSELS — Update these arrays if you upload new images
 const digitalArtImages = [
   "/lovable-uploads/photo-1618160702438-9b02ab6515c9.jpg",
   "/lovable-uploads/photo-1472396961693-142e6e269027.jpg",
@@ -32,53 +33,60 @@ const HobbiesSection: React.FC = () => {
   return (
     <section id="hobbies" className="section">
       <h2 className="section-title">Hobbies & Interests</h2>
-      <div className="flex flex-col gap-8">
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
         {/* Digital Art Carousel */}
-        <div className="flex flex-col items-center w-full">
-          <h3 className="text-xl font-semibold mb-2">Digital Art</h3>
-          <Carousel className="w-full max-w-xs">
+        <div className="flex flex-col items-center md:items-start w-full md:ml-0">
+          <h3 className="text-xl font-semibold mb-4">Digital Art</h3>
+          <Carousel className="w-full max-w-sm md:max-w-md">
             <CarouselContent>
-              {digitalArtImages.map((img, idx) => (
+              {digitalArtImages.map((img) => (
                 <CarouselItem key={img} className="flex justify-center items-center">
-                  <img
-                    src={img}
-                    alt="Digital Art"
-                    className="aspect-video rounded-lg object-cover w-full h-40"
-                  />
+                  <AspectRatio ratio={16/9} className="bg-muted rounded-lg overflow-hidden">
+                    <img
+                      src={img}
+                      alt="Digital Art"
+                      className="object-cover w-full h-full"
+                    />
+                  </AspectRatio>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="-left-6" />
+            <CarouselNext className="-right-6" />
           </Carousel>
         </div>
+
         {/* Football Carousel */}
-        <div className="flex flex-col items-center w-full">
-          <h3 className="text-xl font-semibold mb-2">Football (Soccer)</h3>
-          <Carousel className="w-full max-w-xs">
+        <div className="flex flex-col items-center md:items-end w-full md:translate-y-16">
+          <h3 className="text-xl font-semibold mb-4">Football (Soccer)</h3>
+          <Carousel className="w-full max-w-sm md:max-w-md">
             <CarouselContent>
-              {footballImages.map((img, idx) => (
+              {footballImages.map((img) => (
                 <CarouselItem key={img} className="flex justify-center items-center">
-                  <img
-                    src={img}
-                    alt="Football Hobby"
-                    className="aspect-video rounded-lg object-cover w-full h-40"
-                  />
+                  <AspectRatio ratio={16/9} className="bg-muted rounded-lg overflow-hidden">
+                    <img
+                      src={img}
+                      alt="Football Hobby"
+                      className="object-cover w-full h-full"
+                    />
+                  </AspectRatio>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="-left-6" />
+            <CarouselNext className="-right-6" />
           </Carousel>
         </div>
+
         {/* Video Editing Carousel */}
-        <div className="flex flex-col items-center w-full">
-          <h3 className="text-xl font-semibold mb-2">Video Editing</h3>
-          <Carousel className="w-full max-w-xs">
+        <div className="flex flex-col items-center md:col-span-2 w-full md:w-3/4 mx-auto">
+          <h3 className="text-xl font-semibold mb-4">Video Editing</h3>
+          <Carousel className="w-full max-w-sm md:max-w-xl">
             <CarouselContent>
               {videoEditingLinks.map((yt, idx) => (
                 <CarouselItem key={yt} className="flex justify-center items-center">
-                  <div className="aspect-video rounded-lg overflow-hidden w-full h-40 bg-black">
+                  <AspectRatio ratio={16/9} className="bg-black rounded-lg overflow-hidden">
                     <iframe
                       width="100%"
                       height="100%"
@@ -89,12 +97,12 @@ const HobbiesSection: React.FC = () => {
                       allowFullScreen
                       className="w-full h-full"
                     />
-                  </div>
+                  </AspectRatio>
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="-left-6" />
+            <CarouselNext className="-right-6" />
           </Carousel>
         </div>
       </div>

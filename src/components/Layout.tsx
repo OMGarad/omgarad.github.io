@@ -32,7 +32,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <div className="min-h-screen flex flex-col bg-[#F6F4F1] dark:bg-background">
       <NavBar toggleTheme={toggleTheme} theme={theme} />
-      <main className="flex-1">{children}</main>
+      <main className="flex-1 w-full">{children}</main>
     </div>
   );
 };
