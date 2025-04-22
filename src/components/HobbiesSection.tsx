@@ -7,11 +7,9 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
-import { Image, Video } from "lucide-react";
 
-// IMAGE CAROUSELS
+// IMAGE CAROUSELS — Update these arrays if you upload new images
 const digitalArtImages = [
-  // The user is expected to provide or upload these images (use placeholder names for now)
   "/lovable-uploads/photo-1618160702438-9b02ab6515c9.jpg",
   "/lovable-uploads/photo-1472396961693-142e6e269027.jpg",
   "/lovable-uploads/photo-1466721591366-2d5fba72006d.jpg",
@@ -25,22 +23,18 @@ const footballImages = [
   "/lovable-uploads/photo-1518877593221-1f28583780b4.jpg",
 ];
 
-// VIDEO CAROUSEL (YouTube video links, these must be provided by user)
 const videoEditingLinks = [
-  "https://www.youtube.com/embed/dQw4w9WgXcQ", // Example placeholder (user to provide actual link)
-  "https://www.youtube.com/embed/3JZ_D3ELwOQ", // Example placeholder (user to provide actual link)
+  "https://www.youtube.com/embed/dQw4w9WgXcQ", // placeholder 1
+  "https://www.youtube.com/embed/3JZ_D3ELwOQ", // placeholder 2
 ];
 
 const HobbiesSection: React.FC = () => {
   return (
     <section id="hobbies" className="section">
       <h2 className="section-title">Hobbies & Interests</h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="flex flex-col gap-8">
         {/* Digital Art Carousel */}
-        <div className="flex flex-col items-center">
-          <div className="p-3 bg-secondary dark:bg-secondary/20 rounded-full mb-3">
-            <Image className="text-primary dark:text-white" size={28} />
-          </div>
+        <div className="flex flex-col items-center w-full">
           <h3 className="text-xl font-semibold mb-2">Digital Art</h3>
           <Carousel className="w-full max-w-xs">
             <CarouselContent>
@@ -59,10 +53,7 @@ const HobbiesSection: React.FC = () => {
           </Carousel>
         </div>
         {/* Football Carousel */}
-        <div className="flex flex-col items-center">
-          <div className="p-3 bg-secondary dark:bg-secondary/20 rounded-full mb-3">
-            <Image className="text-primary dark:text-white" size={28} />
-          </div>
+        <div className="flex flex-col items-center w-full">
           <h3 className="text-xl font-semibold mb-2">Football (Soccer)</h3>
           <Carousel className="w-full max-w-xs">
             <CarouselContent>
@@ -81,10 +72,7 @@ const HobbiesSection: React.FC = () => {
           </Carousel>
         </div>
         {/* Video Editing Carousel */}
-        <div className="flex flex-col items-center">
-          <div className="p-3 bg-secondary dark:bg-secondary/20 rounded-full mb-3">
-            <Video className="text-primary dark:text-white" size={28} />
-          </div>
+        <div className="flex flex-col items-center w-full">
           <h3 className="text-xl font-semibold mb-2">Video Editing</h3>
           <Carousel className="w-full max-w-xs">
             <CarouselContent>
