@@ -1,7 +1,6 @@
 
-import React, { useRef } from "react";
+import React from "react";
 import { cn } from "@/lib/utils";
-import { useInView } from "react-intersection-observer";
 
 interface ExperienceCardProps {
   exp: {
@@ -13,130 +12,100 @@ interface ExperienceCardProps {
     description: string;
   };
   isActive: boolean;
+  isHovered: boolean;
   setActive: (active: boolean) => void;
   onHover: () => void;
   onBlur: () => void;
+  align: "left" | "right";
 }
 
 const ExperienceCard: React.FC<ExperienceCardProps> = ({
   exp,
   isActive,
+  isHovered,
   setActive,
   onHover,
   onBlur,
+  align,
 }) => {
-  const [isHovered, setIsHovered] = React.useState(false);
-
-  // Handle hover/focus for timeline dot coloring
-  function handleMouseEnter() {
-    setIsHovered(true);
-    onHover();
-  }
-  function handleMouseLeave() {
-    setIsHovered(false);
-    onBlur();
-  }
-  // Handle click to flip/expand
+  // Expanded if hovered or clicked (active)
+  const expanded = isActive || isHovered;
+  // Card flip/expand logic
   function handleClick() {
     setActive(!isActive);
   }
 
-  // Animate expand/flip: 'expanded' when hovered OR clicked
-  const expanded = isActive || isHovered;
-
+  // Timeline dot is highlighted if expanded
   return (
     <div
       className={cn(
-        "relative flex transition-all duration-500 ease-in-out",
-        expanded
-          ? "z-10"
-          : "z-0"
+        "relative flex items-stretch group w-full max-w-[470px] sm:max-w-[460px] md:max-w-[500px] xl:max-w-[600px] transition-all duration-500",
+        align === "left" ? "justify-end" : "justify-start"
       )}
       tabIndex={0}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onFocus={handleMouseEnter}
-      onBlur={handleMouseLeave}
+      onMouseEnter={onHover}
+      onMouseLeave={onBlur}
+      onFocus={onHover}
+      onBlur={onBlur}
       onClick={handleClick}
       aria-expanded={expanded}
     >
-      {/* Timeline dot */}
+      {/* Timeline dot in the center */}
       <div
         className={cn(
-          "absolute -left-7 top-1/2 -translate-y-1/2 h-4 w-4 rounded-full border-2 shadow transition-colors duration-300",
-          expanded
-            ? "bg-accent-foreground border-primary"
-            : "bg-background border-primary"
+          "absolute z-20 top-1/2 -translate-y-1/2",
+          align === "left" ? "-right-8 sm:-right-[38px]" : "-left-8 sm:-left-[38px]"
         )}
-        aria-hidden="true"
-      ></div>
+      >
+        <span
+          className={cn(
+            "h-5 w-5 rounded-full border-2 shadow transition-colors duration-300 block",
+            expanded
+              ? "bg-accent-foreground border-primary"
+              : "bg-background border-primary"
+          )}
+        />
+      </div>
       {/* Card */}
       <div
         className={cn(
-          "flex w-full bg-card dark:bg-card rounded-xl border shadow-lg cursor-pointer group overflow-hidden min-h-[180px] md:min-h-[210px] transition-all duration-500 ease-in-out",
-          expanded ? "md:w-[680px] w-full" : "md:w-[520px] w-full"
+          "relative transition-all duration-500 transform rounded-xl border bg-card dark:bg-card shadow-lg group overflow-hidden hover:shadow-xl cursor-pointer flex",
+          expanded ? "w-[350px] md:w-[500px] xl:w-[600px] min-h-[210px]" : "w-[270px] md:w-[350px] xl:w-[390px] min-h-[170px]"
         )}
-        style={{ minHeight: 160 }}
+        style={{ minHeight: expanded ? 210 : 170 }}
       >
-        {/* Company Image (left) */}
-        <div
-          className={cn(
-            "flex-shrink-0 flex items-center justify-center transition-all",
-            expanded
-              ? "w-1/3 md:w-1/3"
-              : "w-1/4 md:w-[140px]"
-          )}
-        >
-          <img
-            src={exp.companyLogo}
-            alt={exp.company}
-            className={cn(
-              "object-contain h-full w-full bg-white/40 dark:bg-black/30 rounded-xl transition-all duration-500",
-              expanded
-                ? "scale-105"
-                : "scale-100"
-            )}
-            style={{ maxHeight: 160, minHeight: 90 }}
-            draggable={false}
-          />
-        </div>
-
-        {/* Flippable/Expandable Card Content */}
-        <div
-          className={cn(
-            "flex-1 p-5 md:p-6 flex items-center transition-all duration-500",
-            expanded ? "bg-muted/40" : ""
-          )}
-        >
-          {/* Front Side */}
-          {!expanded || !isActive ? (
-            <div className="flex flex-col w-full h-full justify-center">
-              <div>
-                <div className="font-bold text-base md:text-2xl text-primary dark:text-white mb-1">
-                  {exp.position}
-                </div>
-                <div className="font-semibold text-md md:text-lg text-muted-foreground mb-2">
-                  {exp.company}
-                </div>
+        {!expanded || !isActive ? (
+          <div className="flex flex-row items-stretch w-full h-full">
+            {/* Company image (almost full height and left side) */}
+            <div className="flex-shrink-0 flex items-center justify-center bg-white/30 dark:bg-black/20 rounded-l-xl w-[90px] md:w-[130px] xl:w-[180px] min-h-[170px] md:min-h-[210px] overflow-hidden">
+              <img
+                src={exp.companyLogo}
+                alt={exp.company}
+                className="object-contain h-full w-full transition-all rounded-l-xl"
+                draggable={false}
+              />
+            </div>
+            {/* Info right */}
+            <div className="flex flex-col justify-center p-4 gap-2 w-full min-w-0">
+              <div className="font-bold text-lg md:text-2xl xl:text-3xl text-primary dark:text-white truncate">
+                {exp.position}
               </div>
-              <div className="mt-2 text-xs md:text-sm text-muted-foreground flex flex-wrap gap-4">
-                <span>
-                  {exp.location}
-                </span>
-                <span>
-                  {exp.period}
-                </span>
+              <div className="font-semibold text-base md:text-lg text-muted-foreground truncate">
+                {exp.company}
+              </div>
+              <div className="flex gap-2 flex-wrap mt-2 text-xs md:text-sm text-muted-foreground">
+                <span>{exp.location}</span>
+                <span>{exp.period}</span>
               </div>
             </div>
-          ) : (
-            // Back/Expanded Side
-            <div className="flex flex-col justify-center w-full h-full">
-              <div className="text-sm md:text-base text-muted-foreground whitespace-pre-line">
-                {exp.description}
-              </div>
+          </div>
+        ) : (
+          <div className="flex items-center justify-center w-full h-full p-6">
+            <div className="text-sm md:text-base text-muted-foreground whitespace-pre-line">
+              {exp.description}
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 
 import React from "react";
 import ExperienceCard from "./ExperienceCard";
-import { MapPin } from "lucide-react";
 
 const experienceData = [
   {
@@ -34,31 +33,63 @@ const experienceData = [
 ];
 
 const ExperienceSection: React.FC = () => {
-  // Manage which card is "clicked open"
   const [activeIdx, setActiveIdx] = React.useState<number | null>(null);
-  // For timeline dot highlight on hover
   const [hoveredIdx, setHoveredIdx] = React.useState<number | null>(null);
 
   return (
-    <section id="experience" className="section fade-section">
-      <h2 className="section-title">Experience</h2>
-      <div className="timeline-container pb-8">
-        {experienceData.map((exp, idx) => (
-          <div
-            key={exp.company}
-            className="mb-10 relative animate-fade-in-right"
-          >
-            <ExperienceCard
-              exp={exp}
-              isActive={activeIdx === idx}
-              setActive={(state) => {
-                setActiveIdx(state ? idx : null);
-              }}
-              onHover={() => setHoveredIdx(idx)}
-              onBlur={() => setHoveredIdx(null)}
-            />
-          </div>
-        ))}
+    <section id="experience" className="section fade-section !pt-6 md:!pt-10">
+      <h2 className="section-title text-center">Experience</h2>
+      <div className="relative mx-auto max-w-5xl w-full flex flex-col">
+        {/* Center vertical timeline */}
+        <div className="absolute left-1/2 top-0 h-full w-1 bg-primary/30 dark:bg-primary/20 z-0 transform -translate-x-1/2 pointer-events-none"></div>
+        {/* Timeline Cards */}
+        <div className="flex flex-col gap-4">
+          {experienceData.map((exp, idx) => {
+            const side = idx % 2 === 0 ? "left" : "right";
+            return (
+              <div key={exp.company} className="relative z-10 w-full flex">
+                {/* Empty space for side alignment */}
+                {side === "left" ? (
+                  <>
+                    <div className="flex-1 flex justify-end pr-4 sm:pr-8">
+                      <ExperienceCard
+                        exp={exp}
+                        isActive={activeIdx === idx}
+                        isHovered={hoveredIdx === idx}
+                        setActive={(state) => {
+                          setActiveIdx(state ? idx : null);
+                        }}
+                        onHover={() => setHoveredIdx(idx)}
+                        onBlur={() => setHoveredIdx(null)}
+                        align="left"
+                      />
+                    </div>
+                    <div className="w-0 sm:w-[28px] flex-shrink-0"></div>
+                    <div className="flex-1" />
+                  </>
+                ) : (
+                  <>
+                    <div className="flex-1" />
+                    <div className="w-0 sm:w-[28px] flex-shrink-0"></div>
+                    <div className="flex-1 flex justify-start pl-4 sm:pl-8">
+                      <ExperienceCard
+                        exp={exp}
+                        isActive={activeIdx === idx}
+                        isHovered={hoveredIdx === idx}
+                        setActive={(state) => {
+                          setActiveIdx(state ? idx : null);
+                        }}
+                        onHover={() => setHoveredIdx(idx)}
+                        onBlur={() => setHoveredIdx(null)}
+                        align="right"
+                      />
+                    </div>
+                  </>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );

@@ -8,7 +8,6 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 
-// Full width images for carousels
 const digitalArtImages = [
   "/lovable-uploads/photo-1618160702438-9b02ab6515c9.jpg",
   "/lovable-uploads/photo-1472396961693-142e6e269027.jpg",
@@ -32,18 +31,18 @@ const HobbiesSection: React.FC = () => {
   return (
     <section id="hobbies" className="section fade-section">
       <h2 className="section-title">Hobbies & Interests</h2>
-      <div className="flex flex-col gap-12 w-full">
+      <div className="flex flex-col gap-12 w-full items-center">
         {/* Digital Art Carousel */}
-        <div className="w-full flex flex-col items-center md:items-start">
+        <div className="w-full max-w-[900px] flex flex-col items-center md:items-start">
           <h3 className="text-xl font-semibold mb-2 w-full">Digital Art</h3>
-          <Carousel className="w-full aspect-video max-w-full">
+          <Carousel className="w-full aspect-video max-w-full rounded-lg">
             <CarouselContent>
-              {digitalArtImages.map((img, idx) => (
+              {digitalArtImages.map((img) => (
                 <CarouselItem key={img} className="flex justify-center items-center">
                   <img
                     src={img}
                     alt="Digital Art"
-                    className="aspect-video rounded-lg object-cover w-full max-h-[55vw] md:max-h-[420px]"
+                    className="aspect-video rounded-lg object-cover w-full max-h-[60vw] md:max-h-[440px]"
                   />
                 </CarouselItem>
               ))}
@@ -53,16 +52,16 @@ const HobbiesSection: React.FC = () => {
           </Carousel>
         </div>
         {/* Football Carousel */}
-        <div className="w-full flex flex-col items-center md:items-start">
+        <div className="w-full max-w-[900px] flex flex-col items-center md:items-start">
           <h3 className="text-xl font-semibold mb-2 w-full">Football (Soccer)</h3>
-          <Carousel className="w-full aspect-video max-w-full">
+          <Carousel className="w-full aspect-video max-w-full rounded-lg">
             <CarouselContent>
-              {footballImages.map((img, idx) => (
+              {footballImages.map((img) => (
                 <CarouselItem key={img} className="flex justify-center items-center">
                   <img
                     src={img}
                     alt="Football Hobby"
-                    className="aspect-video rounded-lg object-cover w-full max-h-[55vw] md:max-h-[420px]"
+                    className="aspect-video rounded-lg object-cover w-full max-h-[60vw] md:max-h-[440px]"
                   />
                 </CarouselItem>
               ))}
@@ -72,13 +71,13 @@ const HobbiesSection: React.FC = () => {
           </Carousel>
         </div>
         {/* Video Editing Carousel */}
-        <div className="w-full flex flex-col items-center md:items-start">
+        <div className="w-full max-w-[900px] flex flex-col items-center md:items-start">
           <h3 className="text-xl font-semibold mb-2 w-full">Video Editing</h3>
-          <Carousel className="w-full aspect-video max-w-full">
+          <Carousel className="w-full aspect-video max-w-full rounded-lg">
             <CarouselContent>
               {videoEditingLinks.map((yt, idx) => (
                 <CarouselItem key={yt} className="flex justify-center items-center">
-                  <div className="aspect-video rounded-lg overflow-hidden w-full max-h-[55vw] md:max-h-[420px] bg-black">
+                  <div className="aspect-video rounded-lg overflow-hidden w-full max-h-[60vw] md:max-h-[440px] bg-black">
                     <iframe
                       width="100%"
                       height="100%"

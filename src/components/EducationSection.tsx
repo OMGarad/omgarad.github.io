@@ -33,27 +33,50 @@ const EducationSection: React.FC = () => {
   const [activeIdx, setActiveIdx] = React.useState<number | null>(null);
 
   return (
-    <section id="education" className="section fade-section">
-      <h2 className="section-title">Education</h2>
-      <div className="timeline-container pb-8">
-        {educationData.map((edu, idx) => (
-          <div
-            key={edu.institution}
-            className="mb-10 relative animate-fade-in-right"
-            onMouseEnter={() => setActiveIdx(idx)}
-            onMouseLeave={() => setActiveIdx(null)}
-            onFocus={() => setActiveIdx(idx)}
-            onBlur={() => setActiveIdx(null)}
-            tabIndex={0}
-          >
-            <EducationCard
-              edu={edu}
-              isActive={activeIdx === idx}
-              onHover={() => setActiveIdx(idx)}
-              onBlur={() => setActiveIdx(null)}
-            />
-          </div>
-        ))}
+    <section id="education" className="section fade-section !pt-6 md:!pt-10">
+      <h2 className="section-title text-center">Education</h2>
+      <div className="relative mx-auto max-w-5xl w-full flex flex-col">
+        {/* Center vertical timeline */}
+        <div className="absolute left-1/2 top-0 h-full w-1 bg-primary/30 dark:bg-primary/20 z-0 transform -translate-x-1/2 pointer-events-none"></div>
+        {/* Timeline Cards */}
+        <div className="flex flex-col gap-4">
+          {educationData.map((edu, idx) => {
+            const side = idx % 2 === 0 ? "left" : "right";
+            return (
+              <div key={edu.institution} className="relative z-10 w-full flex">
+                {side === "left" ? (
+                  <>
+                    <div className="flex-1 flex justify-end pr-4 sm:pr-8">
+                      <EducationCard
+                        edu={edu}
+                        isActive={activeIdx === idx}
+                        onHover={() => setActiveIdx(idx)}
+                        onBlur={() => setActiveIdx(null)}
+                        align="left"
+                      />
+                    </div>
+                    <div className="w-0 sm:w-[28px] flex-shrink-0"></div>
+                    <div className="flex-1" />
+                  </>
+                ) : (
+                  <>
+                    <div className="flex-1" />
+                    <div className="w-0 sm:w-[28px] flex-shrink-0"></div>
+                    <div className="flex-1 flex justify-start pl-4 sm:pl-8">
+                      <EducationCard
+                        edu={edu}
+                        isActive={activeIdx === idx}
+                        onHover={() => setActiveIdx(idx)}
+                        onBlur={() => setActiveIdx(null)}
+                        align="right"
+                      />
+                    </div>
+                  </>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
