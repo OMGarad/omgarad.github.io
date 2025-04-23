@@ -1,14 +1,10 @@
+
 import React, { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon, Search } from "lucide-react";
-import {
-  CommandDialog,
-  CommandInput,
-  CommandList,
-  CommandEmpty,
-  CommandGroup,
-  CommandItem,
-} from "@/components/ui/command";
-import { experienceData, educationData } from "../data/portfolioData";
+import MobileMenu from "./navbar/MobileMenu";
+import ThemeToggle from "./navbar/ThemeToggle";
+import SearchButton from "./navbar/SearchButton";
+import SearchDialog from "./navbar/SearchDialog";
+import DesktopMenu from "./navbar/DesktopMenu";
 
 interface NavBarProps {
   toggleTheme: () => void;
@@ -20,27 +16,16 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
   const [scrolled, setScrolled] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 10);
     };
 
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleDownloadCV = () => {
@@ -77,144 +62,31 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
           Omkar Garad
         </a>
 
-        <div className="hidden md:flex items-center space-x-1">
-          {sections.map((section) => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              className="nav-item"
-            >
-              {section.label}
-            </a>
-          ))}
-          <button 
-            onClick={handleDownloadCV} 
-            className="nav-item"
-          >
-            CV
-          </button>
-          <button
-            onClick={toggleTheme}
-            className="p-2 ml-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors dark:bg-white/5 dark:hover:bg-white/10"
-            aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-          >
-            {theme === "light" ? (
-              <Moon size={18} className="text-primary" />
-            ) : (
-              <Sun size={18} className="text-white" />
-            )}
-          </button>
-          <button
-            onClick={() => setIsSearchOpen(true)}
-            className="p-2 ml-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors dark:bg-white/5 dark:hover:bg-white/10"
-            aria-label="Search"
-          >
-            <Search size={18} className="text-primary dark:text-white" />
-          </button>
-        </div>
+        <DesktopMenu sections={sections} handleDownloadCV={handleDownloadCV} />
 
         <div className="md:hidden flex items-center gap-2">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors dark:bg-white/5 dark:hover:bg-white/10"
-            aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-          >
-            {theme === "light" ? (
-              <Moon size={18} className="text-primary" />
-            ) : (
-              <Sun size={18} className="text-white" />
-            )}
-          </button>
-          <button
-            onClick={() => setIsSearchOpen(true)}
-            className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors dark:bg-white/5 dark:hover:bg-white/10"
-            aria-label="Search"
-          >
-            <Search size={18} className="text-primary dark:text-white" />
-          </button>
-          <button
-            className="p-2 text-primary dark:text-white"
-            onClick={toggleMenu}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+          <SearchButton onClick={() => setIsSearchOpen(true)} />
+          <MobileMenu
+            isMenuOpen={isMenuOpen}
+            toggleMenu={toggleMenu}
+            closeMenu={closeMenu}
+            sections={sections}
+            handleDownloadCV={handleDownloadCV}
+          />
         </div>
+
+        <div className="hidden md:flex items-center gap-2">
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+          <SearchButton onClick={() => setIsSearchOpen(true)} />
+        </div>
+
+        <SearchDialog
+          isOpen={isSearchOpen}
+          onOpenChange={setIsSearchOpen}
+          sections={sections}
+        />
       </nav>
-
-      <div
-        className={`fixed inset-0 bg-background dark:bg-background pt-20 z-30 transform transition-transform duration-300 ease-in-out md:hidden ${
-          isMenuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
-      >
-        <div className="flex flex-col items-center space-y-6 py-8">
-          {sections.map((section) => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              className="text-lg font-medium text-primary dark:text-white hover:text-primary/80 dark:hover:text-white/80"
-              onClick={closeMenu}
-            >
-              {section.label}
-            </a>
-          ))}
-          <button 
-            onClick={() => {
-              handleDownloadCV();
-              closeMenu();
-            }} 
-            className="text-lg font-medium text-primary dark:text-white hover:text-primary/80 dark:hover:text-white/80"
-          >
-            CV
-          </button>
-        </div>
-      </div>
-
-      <CommandDialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
-        <CommandInput placeholder="Search..." />
-        <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Sections">
-            {sections.map((section) => (
-              <CommandItem
-                key={section.id}
-                onSelect={() => {
-                  window.location.href = `#${section.id}`;
-                  setIsSearchOpen(false);
-                }}
-              >
-                {section.label}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-          <CommandGroup heading="Experience">
-            {experienceData.map((exp) => (
-              <CommandItem
-                key={exp.company}
-                onSelect={() => {
-                  window.location.href = "#experience";
-                  setIsSearchOpen(false);
-                }}
-              >
-                {exp.position} at {exp.company}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-          <CommandGroup heading="Education">
-            {educationData.map((edu) => (
-              <CommandItem
-                key={edu.institution}
-                onSelect={() => {
-                  window.location.href = "#education";
-                  setIsSearchOpen(false);
-                }}
-              >
-                {edu.degree} at {edu.institution}
-              </CommandItem>
-            ))}
-          </CommandGroup>
-        </CommandList>
-      </CommandDialog>
     </header>
   );
 };
