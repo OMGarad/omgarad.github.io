@@ -1,4 +1,3 @@
-
 import React from "react";
 import EducationCard from "./EducationCard";
 
@@ -14,6 +13,29 @@ const educationData = [
       "GPA: 3.76",
     ],
     award: "William & Barbara Dahl Master's Fellow, Merit Scholar",
+    teaching: [
+      "NCCY 5010: Data Analytics and Modeling (Fall 2023)",
+      "TECH 5110: Early Adopters (Spring 2024)",
+    ],
+    courses: [
+      {
+        term: "Spring 2024 (ongoing)",
+        courses: [
+          "CS 4670: Computer Vision",
+          "CS 5304: Data Science in the Wild",
+          "INFO 5375: Machine Learning for Health",
+        ],
+      },
+      {
+        term: "Fall 2023",
+        courses: [
+          "CS 5781: Machine Learning Engineering",
+          "INFO 5600: AI for Healthcare",
+          "CS 5112: Algorithms and Data Structures for Applications",
+          "CS 5682: HCI and Design",
+        ],
+      },
+    ],
   },
   {
     institution: "BITS Pilani",
@@ -26,6 +48,54 @@ const educationData = [
       "CGPA: 8.52/10",
     ],
     award: "Merit Scholar",
+    teaching: [
+      "CS F320: Foundations of Data Science, CSIS Department (Spring 2023)",
+      "MEL G642: VLSI Architectures (Masters Level Course), EE Department (Spring 2022)",
+      "CS F214: Logic in Computer Science, CSIS Department (Fall 2021)",
+    ],
+    courses: [
+      {
+        term: "Spring 2023",
+        courses: ["Applied Statistical Methods"],
+      },
+      {
+        term: "Spring 2022",
+        courses: [
+          "BITS F464: Machine Learning",
+          "CS F320: Foundations of Data Science",
+          "CS F303: Computer Networks",
+          "CS F363: Compiler Construction",
+          "CS F364: Design and Analysis of Algorithms",
+        ],
+      },
+      {
+        term: "Fall 2021",
+        courses: [
+          "CS F429: Natural Language Processing",
+          "CS F407: Artificial Intelligence",
+          "CS F372: Operating Systems",
+          "CS F351: Theory of Computation",
+          "CS F342: Computer Architecture",
+          "CS F301: Principles of Programming Languages",
+        ],
+      },
+      {
+        term: "Spring 2021",
+        courses: [
+          "CS F211: Data Structures and Algorithms",
+          "CS F212: Database Systems",
+          "CS F241: Microprocessors and Interfacing",
+        ],
+      },
+      {
+        term: "Fall 2020",
+        courses: [
+          "CS F213: Object Oriented Programming",
+          "CS F214: Logic in Computer Science",
+          "CS F222: Discrete Structures for Computer Science",
+        ],
+      },
+    ],
   },
 ];
 

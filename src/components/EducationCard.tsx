@@ -1,7 +1,12 @@
 
-import React from "react";
-import { Award, MapPin } from "lucide-react";
+import React, { useState } from "react";
+import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+interface Course {
+  term: string;
+  courses: string[];
+}
 
 interface EducationCardProps {
   edu: {
@@ -12,6 +17,8 @@ interface EducationCardProps {
     period: string;
     highlights: string[];
     award?: string;
+    teaching?: string[];
+    courses?: Course[];
   };
   isActive: boolean;
   onHover: () => void;
@@ -26,17 +33,22 @@ const EducationCard: React.FC<EducationCardProps> = ({
   onBlur,
   align,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
       className={cn(
-        "relative flex items-stretch group w-full max-w-[470px] sm:max-w-[460px] md:max-w-[500px] xl:max-w-[600px] transition-all duration-500",
+        "relative flex items-stretch group w-full max-w-[600px] transition-all duration-500",
         align === "left" ? "justify-end" : "justify-start"
       )}
-      tabIndex={0}
-      onMouseEnter={onHover}
-      onMouseLeave={onBlur}
-      onFocus={onHover}
-      onBlur={onBlur}
+      onMouseEnter={() => {
+        setIsHovered(true);
+        onHover();
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        onBlur();
+      }}
     >
       {/* Timeline dot in the center */}
       <div
@@ -48,55 +60,98 @@ const EducationCard: React.FC<EducationCardProps> = ({
         <span
           className={cn(
             "h-5 w-5 rounded-full border-2 shadow transition-colors duration-300 block",
-            isActive
+            isActive || isHovered
               ? "bg-accent-foreground border-primary"
               : "bg-background border-primary"
           )}
         />
       </div>
-      {/* Card layout */}
+
       <div
         className={cn(
-          "relative flex items-stretch bg-card dark:bg-card rounded-xl border shadow-lg min-h-[120px] w-full group transition-all duration-500"
+          "relative w-full transition-all duration-500 transform rounded-xl border bg-card dark:bg-card shadow-lg hover:shadow-xl overflow-hidden flex",
+          isHovered ? "min-h-[400px]" : "min-h-[220px]"
         )}
       >
-        {/* Logo far left */}
-        <div className="flex-shrink-0 h-[90px] md:h-[120px] w-[90px] md:w-[120px] flex items-center justify-center p-2">
-          <img
-            src={edu.logo}
-            alt={edu.institution}
-            className="h-full w-full object-contain bg-white/40 dark:bg-black/30 rounded-xl"
-            draggable={false}
-          />
-        </div>
-        {/* Center text */}
-        <div className="flex-1 pl-4 pr-2 py-2 flex flex-col justify-center min-w-0">
-          <div className="font-semibold text-lg md:text-2xl text-primary dark:text-white mb-1 truncate">
-            {edu.institution}
-          </div>
-          <div className="font-medium text-base md:text-lg text-muted-foreground mb-2 truncate">
-            {edu.degree}
-          </div>
-          <ul className="list-disc list-inside text-xs md:text-sm space-y-1 text-muted-foreground">
-            {edu.highlights.map((h, i) => (
-              <li key={i}>{h}</li>
-            ))}
-          </ul>
-          {edu.award && (
-            <div className="mt-2 flex items-center gap-2 text-xs md:text-sm text-primary dark:text-white/80">
-              <Award size={14} />
-              <span>{edu.award}</span>
+        {!isHovered ? (
+          <div className="flex flex-row items-stretch w-full h-full">
+            {/* Institution logo */}
+            <div className="flex-shrink-0 flex items-center justify-center bg-white/30 dark:bg-black/20 rounded-l-xl w-[220px] overflow-hidden">
+              <img
+                src={edu.logo}
+                alt={edu.institution}
+                className="object-contain h-full w-full transition-all rounded-l-xl p-4"
+                draggable={false}
+              />
             </div>
-          )}
-        </div>
-        {/* Location/dates right */}
-        <div className="flex flex-col items-end justify-center pr-4 min-w-[100px] text-xs md:text-sm text-muted-foreground">
-          <div className="flex items-center gap-1 mb-1">
-            <MapPin size={12} />
-            <span>{edu.location}</span>
+            {/* Info right */}
+            <div className="flex flex-col justify-center p-6 gap-2 w-full min-w-0">
+              <div className="font-bold text-2xl xl:text-3xl text-primary dark:text-white">
+                {edu.institution}
+              </div>
+              <div className="font-semibold text-lg xl:text-xl text-muted-foreground">
+                {edu.degree}
+              </div>
+              <div className="flex flex-col gap-1 mt-2 text-sm text-muted-foreground">
+                <div className="flex items-center gap-1">
+                  <MapPin size={14} />
+                  <span>{edu.location}</span>
+                </div>
+                <div>{edu.period}</div>
+              </div>
+            </div>
           </div>
-          <div>{edu.period}</div>
-        </div>
+        ) : (
+          <div className="flex flex-col w-full h-full p-8 overflow-y-auto">
+            {/* Base information */}
+            <div className="mb-6">
+              <h3 className="font-bold text-xl text-primary dark:text-white mb-2">Highlights</h3>
+              <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                {edu.highlights.map((highlight, idx) => (
+                  <li key={idx}>{highlight}</li>
+                ))}
+              </ul>
+              {edu.award && (
+                <p className="mt-2 text-primary dark:text-white/80">{edu.award}</p>
+              )}
+            </div>
+
+            {/* Teaching Experience */}
+            {edu.teaching && edu.teaching.length > 0 && (
+              <div className="mb-6">
+                <h3 className="font-bold text-xl text-primary dark:text-white mb-2">
+                  Teaching Experience
+                </h3>
+                <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                  {edu.teaching.map((exp, idx) => (
+                    <li key={idx}>{exp}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Relevant Coursework */}
+            {edu.courses && edu.courses.length > 0 && (
+              <div>
+                <h3 className="font-bold text-xl text-primary dark:text-white mb-2">
+                  Relevant Coursework
+                </h3>
+                {edu.courses.map((term, idx) => (
+                  <div key={idx} className="mb-4">
+                    <h4 className="font-semibold text-lg text-primary dark:text-white/90 mb-2">
+                      {term.term}
+                    </h4>
+                    <ul className="list-disc list-inside space-y-1 text-muted-foreground">
+                      {term.courses.map((course, courseIdx) => (
+                        <li key={courseIdx}>{course}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
