@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { useState } from "react";
 import EducationCard from "./EducationCard";
 
 const educationData = [
@@ -100,11 +101,11 @@ const educationData = [
 ];
 
 const EducationSection: React.FC = () => {
-  const [activeIdx, setActiveIdx] = React.useState<number | null>(null);
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
 
   return (
     <section id="education" className="section fade-section !pt-6 md:!pt-10">
-      <h2 className="section-title text-center">Education</h2>
+      <h2 className="section-title text-left max-w-5xl mx-auto w-full pl-4">Education</h2>
       <div className="relative mx-auto max-w-5xl w-full flex flex-col">
         {/* Center vertical timeline */}
         <div className="absolute left-1/2 top-0 h-full w-1 bg-primary/30 dark:bg-primary/20 z-0 transform -translate-x-1/2 pointer-events-none"></div>
@@ -120,8 +121,9 @@ const EducationSection: React.FC = () => {
                       <EducationCard
                         edu={edu}
                         isActive={activeIdx === idx}
-                        onHover={() => setActiveIdx(idx)}
-                        onBlur={() => setActiveIdx(null)}
+                        setActive={(state) => {
+                          setActiveIdx(state ? idx : null);
+                        }}
                         align="left"
                       />
                     </div>
@@ -136,8 +138,9 @@ const EducationSection: React.FC = () => {
                       <EducationCard
                         edu={edu}
                         isActive={activeIdx === idx}
-                        onHover={() => setActiveIdx(idx)}
-                        onBlur={() => setActiveIdx(null)}
+                        setActive={(state) => {
+                          setActiveIdx(state ? idx : null);
+                        }}
                         align="right"
                       />
                     </div>

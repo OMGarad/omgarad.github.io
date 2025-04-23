@@ -1,5 +1,14 @@
+
 import React, { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon, Search } from "lucide-react";
+import {
+  CommandDialog,
+  CommandInput,
+  CommandList,
+  CommandEmpty,
+  CommandGroup,
+  CommandItem,
+} from "@/components/ui/command";
 
 interface NavBarProps {
   toggleTheme: () => void;
@@ -9,6 +18,7 @@ interface NavBarProps {
 const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -95,6 +105,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
             )}
           </button>
           <button
+            onClick={() => setIsSearchOpen(true)}
             className="p-2 ml-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors dark:bg-white/5 dark:hover:bg-white/10"
             aria-label="Search"
           >
@@ -115,6 +126,7 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
             )}
           </button>
           <button
+            onClick={() => setIsSearchOpen(true)}
             className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors dark:bg-white/5 dark:hover:bg-white/10"
             aria-label="Search"
           >
@@ -157,6 +169,52 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
           </button>
         </div>
       </div>
+
+      <CommandDialog open={isSearchOpen} onOpenChange={setIsSearchOpen}>
+        <CommandInput placeholder="Search..." />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandGroup heading="Sections">
+            {sections.map((section) => (
+              <CommandItem
+                key={section.id}
+                onSelect={() => {
+                  window.location.href = `#${section.id}`;
+                  setIsSearchOpen(false);
+                }}
+              >
+                {section.label}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+          <CommandGroup heading="Experience">
+            {experienceData.map((exp) => (
+              <CommandItem
+                key={exp.company}
+                onSelect={() => {
+                  window.location.href = "#experience";
+                  setIsSearchOpen(false);
+                }}
+              >
+                {exp.position} at {exp.company}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+          <CommandGroup heading="Education">
+            {educationData.map((edu) => (
+              <CommandItem
+                key={edu.institution}
+                onSelect={() => {
+                  window.location.href = "#education";
+                  setIsSearchOpen(false);
+                }}
+              >
+                {edu.degree} at {edu.institution}
+              </CommandItem>
+            ))}
+          </CommandGroup>
+        </CommandList>
+      </CommandDialog>
     </header>
   );
 };

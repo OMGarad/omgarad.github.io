@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import ExperienceCard from "./ExperienceCard";
 
 const experienceData = [
@@ -33,12 +33,11 @@ const experienceData = [
 ];
 
 const ExperienceSection: React.FC = () => {
-  const [activeIdx, setActiveIdx] = React.useState<number | null>(null);
-  const [hoveredIdx, setHoveredIdx] = React.useState<number | null>(null);
+  const [activeIdx, setActiveIdx] = useState<number | null>(null);
 
   return (
     <section id="experience" className="section fade-section !pt-6 md:!pt-10">
-      <h2 className="section-title text-center">Experience</h2>
+      <h2 className="section-title text-left max-w-5xl mx-auto w-full pl-4">Experience</h2>
       <div className="relative mx-auto max-w-5xl w-full flex flex-col">
         {/* Center vertical timeline */}
         <div className="absolute left-1/2 top-0 h-full w-1 bg-primary/30 dark:bg-primary/20 z-0 transform -translate-x-1/2 pointer-events-none"></div>
@@ -55,12 +54,9 @@ const ExperienceSection: React.FC = () => {
                       <ExperienceCard
                         exp={exp}
                         isActive={activeIdx === idx}
-                        isHovered={hoveredIdx === idx}
                         setActive={(state) => {
                           setActiveIdx(state ? idx : null);
                         }}
-                        onHover={() => setHoveredIdx(idx)}
-                        onBlur={() => setHoveredIdx(null)}
                         align="left"
                       />
                     </div>
@@ -75,12 +71,9 @@ const ExperienceSection: React.FC = () => {
                       <ExperienceCard
                         exp={exp}
                         isActive={activeIdx === idx}
-                        isHovered={hoveredIdx === idx}
                         setActive={(state) => {
                           setActiveIdx(state ? idx : null);
                         }}
-                        onHover={() => setHoveredIdx(idx)}
-                        onBlur={() => setHoveredIdx(null)}
                         align="right"
                       />
                     </div>

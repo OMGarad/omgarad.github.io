@@ -21,20 +21,22 @@ interface EducationCardProps {
     courses?: Course[];
   };
   isActive: boolean;
-  onHover: () => void;
-  onBlur: () => void;
+  setActive: (active: boolean) => void;
   align: "left" | "right";
 }
 
 const EducationCard: React.FC<EducationCardProps> = ({
   edu,
   isActive,
-  onHover,
-  onBlur,
+  setActive,
   align,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const showDetails = isActive || isHovered;
+
+  const handleClick = () => {
+    setActive(!isActive);
+  };
 
   return (
     <div
@@ -42,14 +44,9 @@ const EducationCard: React.FC<EducationCardProps> = ({
         "relative flex items-stretch group w-full max-w-[600px] transition-all duration-500",
         align === "left" ? "justify-end" : "justify-start"
       )}
-      onMouseEnter={() => {
-        setIsHovered(true);
-        onHover();
-      }}
-      onMouseLeave={() => {
-        setIsHovered(false);
-        onBlur();
-      }}
+      onClick={handleClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Timeline dot in the center */}
       <div
@@ -70,7 +67,7 @@ const EducationCard: React.FC<EducationCardProps> = ({
 
       <div
         className={cn(
-          "relative w-full transition-all duration-500 transform rounded-xl border bg-card dark:bg-card shadow-lg hover:shadow-xl overflow-hidden flex",
+          "relative w-full transition-all duration-500 transform rounded-xl border bg-card dark:bg-card shadow-lg hover:shadow-xl cursor-pointer overflow-hidden flex",
           showDetails ? "min-h-[400px]" : "min-h-[220px]"
         )}
       >
