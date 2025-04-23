@@ -8,33 +8,45 @@ interface FadeSectionProps {
 
 const FadeSection: React.FC<FadeSectionProps> = ({ children, className }) => {
   const ref = React.useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = React.useState(false);
+  const [isVisible, setIsVisible] = React.useState(false);
 
   React.useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    function handle(entries: IntersectionObserverEntry[]) {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          setVisible(true);
-        } else {
-          setVisible(false);
-        }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          } else {
+            setIsVisible(false);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
       }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
     }
-    const observer = new window.IntersectionObserver(handle, {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.15,
-    });
-    observer.observe(el);
-    return () => observer.disconnect();
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
   }, []);
 
   return (
     <div
       ref={ref}
-      className={`transition-opacity duration-700 ${visible ? "opacity-100" : "opacity-0"} ${className || ""}`}
+      className={`transition-all duration-700 transform ${
+        isVisible
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-10"
+      } ${className || ""}`}
     >
       {children}
     </div>

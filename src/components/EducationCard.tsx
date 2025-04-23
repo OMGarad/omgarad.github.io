@@ -34,6 +34,7 @@ const EducationCard: React.FC<EducationCardProps> = ({
   align,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const showDetails = isActive || isHovered;
 
   return (
     <div
@@ -60,7 +61,7 @@ const EducationCard: React.FC<EducationCardProps> = ({
         <span
           className={cn(
             "h-5 w-5 rounded-full border-2 shadow transition-colors duration-300 block",
-            isActive || isHovered
+            showDetails
               ? "bg-accent-foreground border-primary"
               : "bg-background border-primary"
           )}
@@ -70,10 +71,10 @@ const EducationCard: React.FC<EducationCardProps> = ({
       <div
         className={cn(
           "relative w-full transition-all duration-500 transform rounded-xl border bg-card dark:bg-card shadow-lg hover:shadow-xl overflow-hidden flex",
-          isHovered ? "min-h-[400px]" : "min-h-[220px]"
+          showDetails ? "min-h-[400px]" : "min-h-[220px]"
         )}
       >
-        {!isHovered ? (
+        {!showDetails ? (
           <div className="flex flex-row items-stretch w-full h-full">
             {/* Institution logo */}
             <div className="flex-shrink-0 flex items-center justify-center bg-white/30 dark:bg-black/20 rounded-l-xl w-[220px] overflow-hidden">
@@ -105,7 +106,9 @@ const EducationCard: React.FC<EducationCardProps> = ({
           <div className="flex flex-col w-full h-full p-8 overflow-y-auto">
             {/* Base information */}
             <div className="mb-6">
-              <h3 className="font-bold text-xl text-primary dark:text-white mb-2">Highlights</h3>
+              <h3 className="font-bold text-xl text-primary dark:text-white mb-2">
+                Highlights
+              </h3>
               <ul className="list-disc list-inside space-y-1 text-muted-foreground">
                 {edu.highlights.map((highlight, idx) => (
                   <li key={idx}>{highlight}</li>

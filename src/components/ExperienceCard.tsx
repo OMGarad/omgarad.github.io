@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -23,6 +23,9 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   setActive,
   align,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const showDescription = isActive || isHovered;
+
   const handleClick = () => {
     setActive(!isActive);
   };
@@ -34,6 +37,8 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         align === "left" ? "justify-end" : "justify-start"
       )}
       onClick={handleClick}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Timeline dot in the center */}
       <div
@@ -45,7 +50,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
         <span
           className={cn(
             "h-5 w-5 rounded-full border-2 shadow transition-colors duration-300 block",
-            isActive
+            showDescription
               ? "bg-accent-foreground border-primary"
               : "bg-background border-primary"
           )}
@@ -57,7 +62,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
           "relative w-full transition-all duration-500 transform rounded-xl border bg-card dark:bg-card shadow-lg hover:shadow-xl cursor-pointer overflow-hidden flex min-h-[220px]"
         )}
       >
-        {!isActive ? (
+        {!showDescription ? (
           <div className="flex flex-row items-stretch w-full h-full">
             {/* Company image */}
             <div className="flex-shrink-0 flex items-center justify-center bg-white/30 dark:bg-black/20 rounded-l-xl w-[220px] overflow-hidden">

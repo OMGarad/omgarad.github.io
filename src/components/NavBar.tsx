@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Sun, Moon, Search } from "lucide-react";
 
 interface NavBarProps {
   toggleTheme: () => void;
@@ -35,9 +34,8 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
   }, []);
 
   const handleDownloadCV = () => {
-    // Create a link to download the CV
     const link = document.createElement("a");
-    link.href = "/resume-omkar-garad.pdf"; // Path to your CV file
+    link.href = "/resume-omkar-garad.pdf";
     link.download = "Omkar-Garad-Resume.pdf";
     document.body.appendChild(link);
     link.click();
@@ -69,7 +67,6 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
           Omkar Garad
         </a>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-1">
           {sections.map((section) => (
             <a
@@ -97,9 +94,14 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
               <Sun size={18} className="text-white" />
             )}
           </button>
+          <button
+            className="p-2 ml-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors dark:bg-white/5 dark:hover:bg-white/10"
+            aria-label="Search"
+          >
+            <Search size={18} className="text-primary dark:text-white" />
+          </button>
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center gap-2">
           <button
             onClick={toggleTheme}
@@ -113,6 +115,12 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
             )}
           </button>
           <button
+            className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 transition-colors dark:bg-white/5 dark:hover:bg-white/10"
+            aria-label="Search"
+          >
+            <Search size={18} className="text-primary dark:text-white" />
+          </button>
+          <button
             className="p-2 text-primary dark:text-white"
             onClick={toggleMenu}
             aria-label="Toggle menu"
@@ -122,7 +130,6 @@ const NavBar: React.FC<NavBarProps> = ({ toggleTheme, theme }) => {
         </div>
       </nav>
 
-      {/* Mobile Navigation */}
       <div
         className={`fixed inset-0 bg-background dark:bg-background pt-20 z-30 transform transition-transform duration-300 ease-in-out md:hidden ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
