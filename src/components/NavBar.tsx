@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon, Search } from "lucide-react";
 import {
@@ -9,6 +8,7 @@ import {
   CommandGroup,
   CommandItem,
 } from "@/components/ui/command";
+import { experienceData, educationData } from "../data/portfolioData";
 
 interface NavBarProps {
   toggleTheme: () => void;
