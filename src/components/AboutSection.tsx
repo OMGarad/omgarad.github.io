@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Github, Linkedin, Mail, FileText } from "lucide-react";
 
@@ -30,15 +29,6 @@ const AboutSection: React.FC = () => {
           </div>
           <div className="flex justify-center gap-4 mt-2">
             <a 
-              href="https://github.com/OMGarad" 
-              target="_blank" 
-              rel="noreferrer"
-              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-colors"
-              aria-label="GitHub"
-            >
-              <Github size={24} className="text-primary dark:text-white" />
-            </a>
-            <a 
               href="https://www.linkedin.com/in/omkargarad/" 
               target="_blank" 
               rel="noreferrer"
@@ -53,6 +43,15 @@ const AboutSection: React.FC = () => {
               aria-label="Email"
             >
               <Mail size={24} className="text-primary dark:text-white" />
+            </a>
+            <a 
+              href="https://github.com/OMGarad" 
+              target="_blank" 
+              rel="noreferrer"
+              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-colors"
+              aria-label="GitHub"
+            >
+              <Github size={24} className="text-primary dark:text-white" />
             </a>
             <button
               onClick={handleDownloadCV}

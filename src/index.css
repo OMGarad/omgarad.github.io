@@ -133,11 +133,11 @@
   }
 
   .section-title {
-    @apply text-3xl font-bold tracking-tight mb-6 text-primary dark:text-white;
+    @apply text-3xl font-bold tracking-tight mb-6 text-primary dark:text-white text-left;
   }
 
   .section {
-    @apply py-12 md:py-20 px-3 md:px-8 lg:px-10 xl:px-14 max-w-full w-full mx-auto scroll-mt-20;
+    @apply py-12 md:py-20 px-6 md:px-8 lg:px-10 xl:px-14 max-w-7xl w-full mx-auto scroll-mt-20;
     transition: padding 0.3s;
   }
 }
