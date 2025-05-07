@@ -133,12 +133,12 @@
   }
 
   .animate-pulse-glow {
-    --primary-rgb: 0, 0, 0;
+    --primary-rgb: 0, 122, 255;
     animation: pulse-glow 3s infinite;
   }
 
   .dark .animate-pulse-glow {
-    --primary-rgb: 255, 255, 255;
+    --primary-rgb: 99, 102, 241;
   }
 }
 
