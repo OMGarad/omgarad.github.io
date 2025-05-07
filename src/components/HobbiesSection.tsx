@@ -35,7 +35,7 @@ const HobbiesSection: React.FC = () => {
         {/* Digital Art Carousel */}
         <div className="w-full max-w-[900px] flex flex-col items-center md:items-start">
           <h3 className="text-xl font-semibold mb-2 w-full">Digital Art</h3>
-          <Carousel className="w-full aspect-video max-w-full rounded-lg">
+          <Carousel className="w-full aspect-video max-w-full rounded-lg transition-transform hover:-translate-y-2 hover:shadow-xl animate-pulse-glow">
             <CarouselContent>
               {digitalArtImages.map((img) => (
                 <CarouselItem key={img} className="flex justify-center items-center">
@@ -47,14 +47,14 @@ const HobbiesSection: React.FC = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hover:-translate-y-1 transition-transform" />
+            <CarouselNext className="hover:-translate-y-1 transition-transform" />
           </Carousel>
         </div>
         {/* Football Carousel */}
         <div className="w-full max-w-[900px] flex flex-col items-center md:items-start">
           <h3 className="text-xl font-semibold mb-2 w-full">Football (Soccer)</h3>
-          <Carousel className="w-full aspect-video max-w-full rounded-lg">
+          <Carousel className="w-full aspect-video max-w-full rounded-lg transition-transform hover:-translate-y-2 hover:shadow-xl animate-pulse-glow">
             <CarouselContent>
               {footballImages.map((img) => (
                 <CarouselItem key={img} className="flex justify-center items-center">
@@ -66,14 +66,14 @@ const HobbiesSection: React.FC = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hover:-translate-y-1 transition-transform" />
+            <CarouselNext className="hover:-translate-y-1 transition-transform" />
           </Carousel>
         </div>
         {/* Video Editing Carousel */}
         <div className="w-full max-w-[900px] flex flex-col items-center md:items-start">
           <h3 className="text-xl font-semibold mb-2 w-full">Video Editing</h3>
-          <Carousel className="w-full aspect-video max-w-full rounded-lg">
+          <Carousel className="w-full aspect-video max-w-full rounded-lg transition-transform hover:-translate-y-2 hover:shadow-xl animate-pulse-glow">
             <CarouselContent>
               {videoEditingLinks.map((yt, idx) => (
                 <CarouselItem key={yt} className="flex justify-center items-center">
@@ -92,8 +92,8 @@ const HobbiesSection: React.FC = () => {
                 </CarouselItem>
               ))}
             </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
+            <CarouselPrevious className="hover:-translate-y-1 transition-transform" />
+            <CarouselNext className="hover:-translate-y-1 transition-transform" />
           </Carousel>
         </div>
       </div>

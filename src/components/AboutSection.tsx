@@ -1,3 +1,4 @@
+
 import React from "react";
 import { Github, Linkedin, Mail, FileText } from "lucide-react";
 
@@ -32,14 +33,14 @@ const AboutSection: React.FC = () => {
               href="https://www.linkedin.com/in/omkargarad/" 
               target="_blank" 
               rel="noreferrer"
-              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-colors"
+              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-md hover:ring-2 hover:ring-primary dark:hover:ring-white"
               aria-label="LinkedIn"
             >
               <Linkedin size={24} className="text-primary dark:text-white" />
             </a>
             <a 
               href="mailto:omgarad@gmail.com" 
-              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-colors"
+              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-md hover:ring-2 hover:ring-primary dark:hover:ring-white"
               aria-label="Email"
             >
               <Mail size={24} className="text-primary dark:text-white" />
@@ -48,14 +49,14 @@ const AboutSection: React.FC = () => {
               href="https://github.com/OMGarad" 
               target="_blank" 
               rel="noreferrer"
-              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-colors"
+              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-md hover:ring-2 hover:ring-primary dark:hover:ring-white"
               aria-label="GitHub"
             >
               <Github size={24} className="text-primary dark:text-white" />
             </a>
             <button
               onClick={handleDownloadCV}
-              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-colors"
+              className="p-3 bg-secondary dark:bg-secondary/20 rounded-full hover:bg-primary/10 dark:hover:bg-white/10 transition-all duration-300 hover:transform hover:-translate-y-1 hover:shadow-md hover:ring-2 hover:ring-primary dark:hover:ring-white"
               aria-label="Download CV"
             >
               <FileText size={24} className="text-primary dark:text-white" />

@@ -24,7 +24,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   align,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const showDescription = isActive || isHovered;
+  const showDescription = isActive;
 
   const handleClick = () => {
     setActive(!isActive);
@@ -59,7 +59,9 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
 
       <div
         className={cn(
-          "relative w-full transition-all duration-500 transform rounded-xl border bg-card dark:bg-card shadow-lg hover:shadow-xl cursor-pointer overflow-hidden flex min-h-[220px]"
+          "relative w-full transition-all duration-500 transform rounded-xl border bg-card dark:bg-card shadow-lg hover:shadow-xl cursor-pointer overflow-hidden flex min-h-[220px]",
+          isHovered && !isActive ? "hover:-translate-y-2 animate-pulse-glow" : "",
+          isActive ? "z-10" : ""
         )}
       >
         {!showDescription ? (

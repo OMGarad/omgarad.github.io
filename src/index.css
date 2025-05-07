@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -121,6 +122,24 @@
     animation-iteration-count: infinite;
     animation-direction: alternate;
   }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px 0 rgba(var(--primary-rgb), 0.1);
+    }
+    50% {
+      box-shadow: 0 0 15px 0 rgba(var(--primary-rgb), 0.3);
+    }
+  }
+
+  .animate-pulse-glow {
+    --primary-rgb: 0, 0, 0;
+    animation: pulse-glow 3s infinite;
+  }
+
+  .dark .animate-pulse-glow {
+    --primary-rgb: 255, 255, 255;
+  }
 }
 
 @layer components {
@@ -129,7 +148,7 @@
   }
 
   .card {
-    @apply rounded-xl border bg-card p-6 shadow-sm transition-all duration-200 hover:shadow-md;
+    @apply rounded-xl border bg-card p-6 shadow-sm transition-all duration-200;
   }
 
   .section-title {
