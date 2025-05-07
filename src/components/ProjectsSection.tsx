@@ -1,5 +1,6 @@
 
 import React from "react";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 
 interface Project {
   title: string;
@@ -54,7 +55,7 @@ const ProjectsSection: React.FC = () => {
         {projectsData.map((project, index) => (
           <div
             key={index}
-            className="card hover:shadow-lg transition-all duration-300 animate-fade-in-up hover:-translate-y-2 hover:shadow-xl animate-pulse-glow"
+            className="card hover:shadow-lg transition-all duration-300 animate-fade-in-up hover:-translate-y-2 hover:shadow-xl hover:animate-pulse-glow"
             style={{ animationDelay: `${index * 100}ms` }}
           >
             <div className="aspect-video w-full overflow-hidden rounded-lg mb-4 bg-secondary/50 dark:bg-secondary/20">
