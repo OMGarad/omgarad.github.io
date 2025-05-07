@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -68,7 +67,7 @@ const EducationCard: React.FC<EducationCardProps> = ({
       <div
         className={cn(
           "relative w-full transition-all duration-500 transform rounded-xl border bg-card dark:bg-card shadow-lg hover:shadow-xl cursor-pointer overflow-hidden flex",
-          isHovered && !isActive ? "hover:-translate-y-2 animate-pulse-glow" : "",
+          isHovered && !isActive ? "hover:-translate-y-2 hover:animate-pulse-glow" : "",
           showDetails ? "min-h-[400px] z-10" : "min-h-[220px]"
         )}
       >
