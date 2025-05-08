@@ -3,7 +3,7 @@
 export const experienceData = [
   {
     company: "Honeywell",
-    companyLogo: "/lovable-uploads/dc30d013-8bf1-48fb-bc9d-960e56c76dff.png",
+    companyLogo: "/lovable-uploads/honeywell.png",
     position: "AI/ML Intern",
     location: "Atlanta, GA",
     period: "May 2024 - Aug 2024",
@@ -12,7 +12,7 @@ export const experienceData = [
   },
   {
     company: "UGent LT3",
-    companyLogo: "/lovable-uploads/8bb54a9e-ad73-4808-adc4-7c2a9ee5648e.png",
+    companyLogo: "/lovable-uploads/lt3.png",
     position: "NLP Research Intern",
     location: "Ghent, Belgium",
     period: "Aug 2022 - Jan 2023",
@@ -21,7 +21,7 @@ export const experienceData = [
   },
   {
     company: "IBM",
-    companyLogo: "/lovable-uploads/cb964b1f-6b1c-47d0-89ac-af891a0a3be9.png",
+    companyLogo: "/lovable-uploads/ibm.png",
     position: "Machine Learning Intern",
     location: "Bangalore, India",
     period: "May 2022 - Aug 2022",
@@ -33,8 +33,8 @@ export const experienceData = [
 // Education data for the portfolio
 export const educationData = [
   {
-    institution: "Cornell University (Cornell Tech)",
-    logo: "/lovable-uploads/8da41661-ee31-4013-8b5b-6a7d63b92fac.png",
+    institution: "Cornell University",
+    logo: "/lovable-uploads/cornell.png",
     degree: "MS in Information Systems",
     location: "New York, NY",
     period: "August 2023 - May 2025",
@@ -44,16 +44,33 @@ export const educationData = [
     ],
     award: "William & Barbara Dahl Master's Fellow, Merit Scholar",
     teaching: [
-      "NCCY 5010: Data Analytics and Modeling (Fall 2023)",
+      "CS 5304: Data Science in the Wild (Spring 2025)",
+      "CS 5112: Algorithms and Data Structures for Applications (Fall 2024)",
       "TECH 5110: Early Adopters (Spring 2024)",
+      "NCCY 5010: Data Analytics and Modeling (Fall 2023)"
     ],
     courses: [
       {
-        term: "Spring 2024 (ongoing)",
+        term: "Spring 2025",
+        courses: [
+          "ECE 5545: Machine Learning Hardware and Systems",
+          "INFO 5368: Practical Applications of Machine Learning",
+        ],
+      },
+      {
+        term: "Fall 2024",
+        courses: [
+          "CS 5787: Deep Learning"
+        ],
+      },
+      {
+        term: "Spring 2024",
         courses: [
           "CS 4670: Computer Vision",
           "CS 5304: Data Science in the Wild",
           "INFO 5375: Machine Learning for Health",
+          "NBAY 5710: Cryptocurrencies",
+          "NBAY 6820: Negotiation Essentials"
         ],
       },
       {
@@ -63,13 +80,15 @@ export const educationData = [
           "INFO 5600: AI for Healthcare",
           "CS 5112: Algorithms and Data Structures for Applications",
           "CS 5682: HCI and Design",
+          "TECHIE 5310: Business Fundamentals",
+          "NBAY 6080: Building Entreprenuerial Ventures"
         ],
       },
     ],
   },
   {
     institution: "BITS Pilani",
-    logo: "/lovable-uploads/c2c4b292-8684-448a-8822-cee12dcb44f6.png",
+    logo: "/lovable-uploads/bits.png",
     degree: "Bachelor of Engineering in Computer Science",
     location: "Goa, India",
     period: "August 2019 - May 2023",

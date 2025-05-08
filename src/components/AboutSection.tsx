@@ -3,7 +3,7 @@ import React from "react";
 import { Github, Linkedin, Mail, FileText } from "lucide-react";
 
 const AboutSection: React.FC = () => {
-  const profileImageUrl = "/lovable-uploads/53008bc9-6171-403b-977e-1822e27342b8.png";
+  const profileImageUrl = "lovable-uploads/profile_picture.jpeg";
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
@@ -68,15 +68,15 @@ const AboutSection: React.FC = () => {
           <div className="mb-6">
             <div className="h-12 overflow-hidden">
               <h1 className="typing-animation text-3xl md:text-4xl font-bold">
-                Hi, my name is Omkar Garad!
+                Hi, my name is Omkar Garad! 👋
               </h1>
             </div>
           </div>
 
           <p className="text-lg text-muted-foreground mb-6">
-            I'm a Data Science and AI enthusiast currently pursuing my MS in Information Systems at Cornell Tech. 
-            With a background in Computer Science, I'm passionate about applying machine learning techniques to 
-            solve complex problems in health tech and other domains.
+            I'm an AI enthusiast currently pursuing my masters at Cornell. 
+            With a background in Computer Science and Data Science, I'm passionate about applying machine learning techniques to 
+            solve complex problems.
           </p>
         </div>
       </div>
