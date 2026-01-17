@@ -4,11 +4,20 @@ export const experienceData = [
   {
     company: "Honeywell",
     companyLogo: "/lovable-uploads/honeywell.png",
+    position: "AI Engineer 2",
+    location: "Atlanta, GA",
+    period: "July 2025 - Present",
+    description:
+      "I am currently working as an AI Engineer 2 at Honeywell after converting my summer internship into a full-time return offer. Continuing within Honeywell Building Technologies' Building Automation division, I lead research and development in edge ML for smart actuators and develop products that enable system integrators to incorporate life and fire safety guidelines into corporate floor plans and produce smart, automated bids for construction projects.",
+  },
+  {
+    company: "Honeywell",
+    companyLogo: "/lovable-uploads/honeywell.png",
     position: "AI/ML Intern",
     location: "Atlanta, GA",
     period: "May 2024 - Aug 2024",
     description:
-      "I was an AI/ML Intern at Honeywell, a Fortune 100 company and global leader in building technologies and industrial automation. Based in their Atlanta location, in the heart of Tech Square, I was the sole intern in the Connected Power team, as part of Honeywell Building Technologies' (HBT) Building Automation division. My primary responsibility was to design and develop a comprehensive data and machine learning pipeline aimed at developing models for smart sockets to reduce building electrical consumption by 35%. I was also featured internationally on Honeywell's website for National Interns Day.",
+      "I was an AI/ML Intern at Honeywell, a Fortune 500 company and global leader in building technologies, industrial automation and aerospace. Based in their Atlanta location, at the global headquarters of Honeywell Building Automation (BA), I was the sole intern in the Connected Power team. Here, I designed and developed a comprehensive data and machine learning pipeline aimed at developing and evaluating models for smart sockets to reduce building electrical consumption by 35%. I was also featured internationally on Honeywell's website for National Interns Day.",
   },
   {
     company: "UGent LT3",
@@ -26,7 +35,7 @@ export const experienceData = [
     location: "Bangalore, India",
     period: "May 2022 - Aug 2022",
     description:
-      "As part of their prestigious Extreme Blue program, I was selected to be a Summer 2022 Machine Learning Intern at IBM, a global technology leader and Fortune 100 company known for innovation and excellence in software and hardware solutions. Based out of the IBM Bangalore office, located in the heart of Bangalore's tech hub, I was the sole ML Intern on my project where I was tasked to develop the full ML pipeline to predict the efficacy of new business opportunities to generate revenue. My cross-functional team GSI Engagement Efficacy Prediction delivered the final product as a proof of concept.",
+      "As part of their prestigious Extreme Blue program, I was selected to be a Summer 2022 Machine Learning Intern at IBM, a global technology leader and Fortune 100 company known for innovation and excellence in software and hardware solutions. Based out of the IBM Bangalore office, located in the heart of Bangalore's tech hub, I was the sole ML Intern on my cross-functional team GSI Engagement Efficacy Prediction where I was tasked to develop the full ML pipeline to predict the efficacy of new business opportunities to generate revenue.",
   },
 ];
 
@@ -35,7 +44,7 @@ export const educationData = [
   {
     institution: "Cornell University",
     logo: "/lovable-uploads/cornell.png",
-    degree: "MS in Information Systems",
+    degree: "Master of Science in Information Systems",
     location: "New York, NY",
     period: "August 2023 - May 2025",
     highlights: [

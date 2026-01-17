@@ -20,7 +20,7 @@ const skillsData: SkillCategory[] = [
     skills: [
       "PyTorch", "TensorFlow", "Pandas", "Azure Databricks", 
       "AWS", "GCP", "Spark", "Kafka", "Hadoop", 
-      "Docker", "Git", "MLOps (MLflow, CI/CD)", "Tableau", "Agile Methodologies"
+      "Docker", "Git", "MLOps (MLflow, CI/CD)", "Tableau", "Agile Development (Jira)"
     ]
   }
 ];

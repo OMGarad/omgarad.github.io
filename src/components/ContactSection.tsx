@@ -27,7 +27,7 @@ const ContactSection: React.FC = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Location</p>
-                  <p>New York, NY</p>
+                  <p>Atlanta, GA</p>
                 </div>
               </div>
             </div>

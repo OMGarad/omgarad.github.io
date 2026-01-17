@@ -74,8 +74,8 @@ const AboutSection: React.FC = () => {
           </div>
 
           <p className="text-lg text-muted-foreground mb-6">
-            I'm an AI enthusiast currently pursuing my masters at Cornell. 
-            With a background in Computer Science and Data Science, I'm passionate about applying machine learning techniques to 
+            I'm an AI enthusiast working as an AI Engineer 2 at Honeywell International Inc. 
+            With a background in Computer Science, Data Science, I'm passionate about applying machine learning techniques to 
             solve complex problems.
           </p>
         </div>
